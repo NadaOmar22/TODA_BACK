@@ -28,6 +28,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("securityFilterChain : 1");
         http
                 .cors()
                 .and()// ENABLE CORS support
@@ -49,6 +50,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        System.out.println("addCorsMappings : 2");
+
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000", "http://localhost:8081")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // allow OPTIONS here too

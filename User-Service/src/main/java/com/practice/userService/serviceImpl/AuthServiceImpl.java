@@ -29,7 +29,8 @@ public class AuthServiceImpl implements AuthService {
     public String login(AuthRequest authRequest) throws Exception {
         String userName = authRequest.getUserName();
         String password = authRequest.getPassword();
-
+        System.out.println(userName);
+        System.out.println(password);
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -37,11 +38,14 @@ public class AuthServiceImpl implements AuthService {
                             password
                     ));
         } catch (BadCredentialsException e) {
+            System.out.println("catch");
             throw new BadRequestException("Invalid Credentials", e);
         }
-
+        System.out.println("before loadUserByUsername");
         AppUser appUser = userDetailsService.loadUserByUsername(userName);
+        System.out.println("after loadUserByUsername");
         String token = jwtUtil.generateToken(appUser.getUsername(), appUser.getId().toString());
+        System.out.println("token" + token);
         return token;
     }
 

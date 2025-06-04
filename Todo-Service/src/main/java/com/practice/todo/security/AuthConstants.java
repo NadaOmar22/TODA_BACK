@@ -7,4 +7,5 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthConstants {
     public String AUTH_USER_ID;
+    public String AUTH_TOKEN;
 }

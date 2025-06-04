@@ -30,6 +30,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) throws Exception {
+        System.out.println("login : 2");
         String token = authService.login(authRequest);
         return ResponseEntity.ok(new AuthResponse(token));
     }

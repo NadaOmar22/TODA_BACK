@@ -30,7 +30,7 @@ public class PasswordServiceImpl implements PasswordService {
         String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(encodedPassword);
         appUserService.saveUser(user);
-        emailService.sendEmail(userName, "Dummy Password EMAIL" ,"Welcome to TODA APP please use this password to login and reset it ASAP",newPassword);
+        emailService.sendEmail(userName, "Dummy Password EMAIL" ,"Welcome to TODA APP please use this password to login and reset it ASAP -> ",newPassword);
     }
 
     @Override
